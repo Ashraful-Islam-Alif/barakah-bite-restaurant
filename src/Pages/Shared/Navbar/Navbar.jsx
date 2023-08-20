@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <>
@@ -25,30 +27,26 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             ></ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">
-            Barakah Bites Restaurant
+          <a className="btn btn-ghost normal-case ">
+            <div className="w-10 rounded-full">
+              <img src="../../../../public/logo.png" alt="" />
+            </div>
+            <div>
+              <h2 className="text-xl"> Barakah Bites </h2>
+              <p className="italic text-left">Restaurant</p>
+            </div>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to="/menu">Menu</Link>
+            </li>
+            <li>
+              <Link to="/order">Order</Link>
             </li>
           </ul>
         </div>

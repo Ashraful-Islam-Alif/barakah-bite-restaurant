@@ -21,7 +21,7 @@ const ChefRecommand = () => {
               purée and tomato and chive vinaigrette
             </p>
             <div className="card-actions">
-              <button className="btn btn-outline my-4 text-yellow-600">
+              <button className="btn btn-outline border-0 border-b-4 mt-4 text-yellow-600">
                 Add To Cart
               </button>
             </div>
@@ -40,9 +40,12 @@ const ChefRecommand = () => {
               purée and tomato and chive vinaigrette
             </p>
             <div className="card-actions">
-              <button className="btn btn-outline my-4 text-yellow-600">
+              <button className="btn btn-active btn-neutral">
                 Add To Cart
               </button>
+              {/* <button className="btn btn-outline my-4 text-yellow-600">
+                Add To Cart
+              </button> */}
             </div>
           </div>
         </div>
@@ -59,7 +62,7 @@ const ChefRecommand = () => {
               purée and tomato and chive vinaigrette
             </p>
             <div className="card-actions">
-              <button className="btn btn-outline my-4 text-yellow-600">
+              <button className="btn btn-outline border-0 border-b-4 mt-4 text-yellow-600">
                 Add To Cart
               </button>
             </div>
