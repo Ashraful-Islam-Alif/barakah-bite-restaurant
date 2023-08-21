@@ -28,17 +28,17 @@ const Menu = () => {
         heading={"Today's Offer"}
       ></SectionTitle>
       <MenuCategory items={offered}></MenuCategory>
-      <Cover img={imgDessert} title={"Dessert"}></Cover>
-      <MenuCategory items={dessert}></MenuCategory>
+      <Cover img={imgDessert} title={"dessert"}></Cover>
+      <MenuCategory items={dessert} title={"dessert"}></MenuCategory>
 
-      <Cover img={imgPizza} title={"Pizza"}></Cover>
-      <MenuCategory items={pizza}></MenuCategory>
+      <Cover img={imgPizza} title={"pizza"}></Cover>
+      <MenuCategory items={pizza} title={"pizza"}></MenuCategory>
 
-      <Cover img={imgsalad} title={"Salad"}></Cover>
-      <MenuCategory items={salad}></MenuCategory>
+      <Cover img={imgsalad} title={"salad"}></Cover>
+      <MenuCategory items={salad} title={"salad"}></MenuCategory>
 
-      <Cover img={imgSoup} title={"Soup"}></Cover>
-      <MenuCategory items={soup}></MenuCategory>
+      <Cover img={imgSoup} title={"soup"}></Cover>
+      <MenuCategory items={soup} title={"soup"}></MenuCategory>
     </div>
   );
 };
