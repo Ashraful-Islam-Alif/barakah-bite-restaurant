@@ -48,6 +48,9 @@ const Navbar = () => {
             <li>
               <Link to="/order/salad">Order</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
           <a className="btn btn-outline bg-gray-200">Sign In</a>
         </div>
