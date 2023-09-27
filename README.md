@@ -1,6 +1,16 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a food items website
+
+Teachnology I am using:
+
+- React + vite
+- Tailwind css + daisyUI
+- swiper
+- react dom
+- react-hook-form
+- react-helmet-async
+- sweetalert2
 
 Currently, two official plugins are available:
 
