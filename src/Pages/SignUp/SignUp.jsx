@@ -1,23 +1,41 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const {
     register,
+    getValues,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("User profile Info updated");
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
     });
   };
   return (
@@ -54,6 +72,22 @@ const SignUp = () => {
                 {errors.name && (
                   <span className="text-red-600 text-xs font-semibold">
                     Name field is required
+                  </span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("photoURL", { required: true })}
+                  placeholder="Photo URL"
+                  className="input input-bordered"
+                />
+                {errors.photoURL && (
+                  <span className="text-red-600 text-xs font-semibold">
+                    Photo URL is required
                   </span>
                 )}
               </div>
@@ -111,11 +145,34 @@ const SignUp = () => {
                     number and one special character,
                   </span>
                 )}
+              </div>
+              <div className="form-control">
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
+                  <span className="label-text">Confirm Password</span>
                 </label>
+                <input
+                  type="password"
+                  {...register("cpassword", {
+                    required: true,
+                    validate: (value) => {
+                      const { password } = getValues();
+                      return password === value || "Passwords should match!";
+                    },
+                  })}
+                  name="cpassword"
+                  placeholder="Confirm password"
+                  className="input input-bordered"
+                />
+                {errors.password?.type === "required" && (
+                  <span className="text-red-600 text-xs font-semibold">
+                    Confirm Password field is required
+                  </span>
+                )}
+                {errors.cpassword && (
+                  <span className="text-red-600 text-xs font-semibold">
+                    {errors.cpassword.message}
+                  </span>
+                )}
               </div>
               <div className="form-control mt-6">
                 <input
