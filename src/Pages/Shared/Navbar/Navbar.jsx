@@ -2,17 +2,56 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+  const navOptions = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/menu">Menu</Link>
+      </li>
+      <li>
+        <Link to="/order/salad">Order</Link>
+      </li>
+      <li>
+        <Link to="/secret">Secret</Link>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="btn gap-2">
+            <FaShoppingCart></FaShoppingCart>
+            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+          </button>
+        </Link>
+      </li>
+      {user ? (
+        <>
+          <li onClick={handleLogOut}>
+            <Link>LogOut</Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">LogIn</Link>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <>
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl text-white bg-black">
+      <div className="navbar fixed z-10  max-w-screen-xl text-white bg-black bg-opacity-30">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -33,8 +72,10 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            ></ul>
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-white bg-black bg-opacity-30 hover:text-white w-52 shadow rounded-box"
+            >
+              {navOptions}
+            </ul>
           </div>
           <a className="btn btn-ghost normal-case ">
             <div className="w-10 rounded-full">
@@ -47,41 +88,7 @@ const Navbar = () => {
           </a>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/menu">Menu</Link>
-            </li>
-            <li>
-              <Link to="/order/salad">Order</Link>
-            </li>
-            <li>
-              <Link to="/secret">Secret</Link>
-            </li>
-            <li>
-              <Link to="/">
-                <button className="btn gap-2">
-                  <FaShoppingCart></FaShoppingCart>
-                  <div className="badge badge-secondary">+99</div>
-                </button>
-              </Link>
-            </li>
-            {user ? (
-              <>
-                <li onClick={handleLogOut}>
-                  <Link>LogOut</Link>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link to="/login">LogIn</Link>
-                </li>
-              </>
-            )}
-          </ul>
+          <ul className="menu menu-horizontal px-1 ">{navOptions}</ul>
         </div>
       </div>
     </>

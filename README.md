@@ -11,6 +11,7 @@ Teachnology I am using:
 - react-hook-form
 - react-helmet-async
 - sweetalert2
+- tanStackQuery(Client side data load and manage)
 
 Currently, two official plugins are available:
 

@@ -125,7 +125,7 @@ const Login = () => {
                 />
               </div>
             </form>
-            <p>
+            <p className="m-6">
               <small>
                 New Here?{" "}
                 <Link to="/signup" className="underline">
