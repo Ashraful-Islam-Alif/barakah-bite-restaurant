@@ -8,6 +8,7 @@ const MyCart = () => {
   //   console.log(cart);
   const total = cart.reduce((sum, item) => item.price + sum, 0);
 
+  //TODO: complete the handleDelete function
   const handleDelete = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -33,13 +34,14 @@ const MyCart = () => {
     });
   };
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Helmet>
         <title>Barakah Bites Restaurant | My Cart</title>
       </Helmet>
       <div className="flex justify-evenly items-center font-semibold h-[60px] ">
         <h3 className="text-3xl">Total Items: {cart?.length}</h3>
-        <h3 className="text-3xl">Total Price: ${total}</h3>
+        <h3 className="text-3xl">Total Price: ${total.toFixed(2)}</h3>{" "}
+        {/* two digit after decimal                                                                                                                                                                              */}
         <button className="btn btn-warning btn-sm">PAY</button>
       </div>
 

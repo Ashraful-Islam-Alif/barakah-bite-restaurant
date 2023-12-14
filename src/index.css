@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-#sidebar a.active {
+#admin a.active {
   color: white;
 }
-#sidebar a {
+#admin a {
   background-color: transparent;
+}
+#activeNav a.active {
+  background-color: rgb(241, 240, 240);
+  color: black;
+}
+/* #activeNav a {
+  background-color: blueviolet;
+} */
+#navLogInOut a.active {
+  background-color: transparent;
+  color: white;
+}
+#navLogInOut:hover a.active {
+  color: black;
 }
