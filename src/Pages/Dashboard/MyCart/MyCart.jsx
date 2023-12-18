@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import useCart from "../../../hooks/useCart";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -42,7 +43,9 @@ const MyCart = () => {
         <h3 className="text-3xl">Total Items: {cart?.length}</h3>
         <h3 className="text-3xl">Total Price: ${total.toFixed(2)}</h3>{" "}
         {/* two digit after decimal                                                                                                                                                                              */}
-        <button className="btn btn-warning btn-sm">PAY</button>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-warning btn-sm">PAY</button>
+        </Link>
       </div>
 
       <div className="overflow-x-auto ">
